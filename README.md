@@ -1,31 +1,42 @@
 # maven-parcel-plugin
 A maven plugin to create parcels.
 
-I wrote this to make it as easy as possible to create a parcel from a java project.   The idea is to 
+I wrote this to make it as easy as possible to create a parcel from a java project.
 
 to use it to build a flume plugin, there is one step:
 
-Add the following to the <build> 
+Add the following to the <build>
 
 <plugin>
-	<groupId>org.hbasejanitor</groupId>
-	<artifactId>parcel-maven-plugin</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<configuration>
-	    <targetTypeOfParcel>flume</targetTypeOfParcel>
-	    <!-- parcel names contain the linux version, if it doesn't matter put el7/el6/weezy depending on the RHEL/centos/whatever version -->
-	    <rhelVersion>${rh.version}</rhelVersion>
-	    <!-- parcelName must be upper case -->
-	    <parcelName>UPPERCASE_PARCEL_NAME</parcelName>
-	    <cdhDepend>CDH (&gt;= 5.2), CDH (&lt;&lt; 6.0)</cdhDepend>
-	</configuration>
-	<executions>
-		<execution>
-		<phase>package</phase>
-			<goals>
-				<goal>makeparcel</goal>
-			</goals>
-		</execution>
-	</executions>
+        <groupId>org.hbasejanitor</groupId>
+        <artifactId>parcel-maven-plugin</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <configuration>
+            <targetTypeOfParcel>flume</targetTypeOfParcel>
+            <parcelName>HBASE10_PROXY_FLUME_SOURCE</parcelName>
+            <cdhVersion>${cdh.version}</cdhVersion>
+            <rhelVersion>${rh.version}</rhelVersion>
+        </configuration>
+
+        <executions>
+                <execution>
+                        <phase>package</phase>
+                        <goals>
+                                <goal>makeparcel</goal>
+                        </goals>
+                </execution>
+        </executions>
 </plugin>
 
+The plugin will:
+1. Generate the evn.sh, alternatives.json, parcel.json,
+2. Create a tar file with the correct directory structure, based on the values for ${parcelName}, ${cdh.version}, and ${rh.version}
+3. It then generates the filelist.json file
+4. Finally, it creates the file .parcel file with the correct naming conventions.
+
+
+Limitations:
+1. You can only have one component per parcel
+
+
+Have fun!

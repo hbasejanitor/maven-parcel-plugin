@@ -265,7 +265,7 @@ public class MavenParcelPlugin extends AbstractMojo  {
         
       }
 
-     // myAssembledTar.delete();
+      myAssembledTar.delete();
       
       // generate the sha1 hash
       String hash = getSha1Hash(parcelFile);
