@@ -5,8 +5,9 @@ I wrote this to make it as easy as possible to create a parcel from a java proje
 
 to use it to build a flume plugin, there is one step:
 
-Add the following to the <build>
+Add the following to the build section of your pom.xml:
 
+```
 <plugin>
         <groupId>org.hbasejanitor</groupId>
         <artifactId>parcel-maven-plugin</artifactId>
@@ -27,6 +28,7 @@ Add the following to the <build>
                 </execution>
         </executions>
 </plugin>
+```
 
 The plugin will:
 1. Generate the evn.sh, alternatives.json, parcel.json,
