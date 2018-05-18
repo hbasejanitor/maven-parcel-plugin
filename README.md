@@ -14,7 +14,7 @@ Add the following to the build section of your pom.xml:
         <version>0.0.1-SNAPSHOT</version>
         <configuration>
             <targetTypeOfParcel>flume</targetTypeOfParcel>
-            <parcelName>HBASE10_PROXY_FLUME_SOURCE</parcelName>
+            <parcelName>${parcel base name} (Anaconda or CDH)</parcelName>
             <cdhVersion>${cdh.version}</cdhVersion>
             <rhelVersion>${rh.version}</rhelVersion>
         </configuration>
