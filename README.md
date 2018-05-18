@@ -14,7 +14,7 @@ Add the following to the build section of your pom.xml:
         <version>0.0.1-SNAPSHOT</version>
         <configuration>
             <targetTypeOfParcel>flume</targetTypeOfParcel>
-            <parcelName>${parcel base name} (Anaconda or CDH)</parcelName>
+            <parcelName>${parcel base name}</parcelName>
             <cdhVersion>${cdh.version}</cdhVersion>
             <rhelVersion>${rh.version}</rheglVersion>
         </configuration>
