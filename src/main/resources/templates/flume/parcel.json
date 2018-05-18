@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "name": "${parcelName}",
+  "version": "${parcelVersion}",
+  "depends": "CDH (>= 5.2), CDH (<< 6.0)",
+  "setActiveSymlink": true,
+  "packages": [
+    {
+      "name": "${project.artifactId}",
+      "version": "${project.version}"
+    }
+  ],
+
+  "components": [
+    {
+      "name": "${project.artifactId}",
+      "version": "${project.version}",
+      "pkg_version": "${project.version}",
+      "pkg_release": "${project.version}"
+    }
+  ],
+
+  "provides": [
+    "flume-plugin"
+  ],
+
+  "groups": [],
+
+  "scripts": {
+    "defines": "env.sh"
+  },
+
+  "users": {
+  }
+}

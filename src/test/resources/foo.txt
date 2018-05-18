@@ -1,0 +1,185 @@
+    //maven-resources-plugin:2.6:resources
+    
+    //element(name("outputDirectory"), "${project.build.directory}/foo")
+
+//    String preResoruces=project.getContextValue("project.build.resources").toString();
+//    project.setContextValue("project.build.resources", tempAssembly.toString());
+//    
+//    
+//    // first, apply filtering to the assembly
+//    executeMojo(plugin("org.apache.maven.plugins","maven-resources-plugin","2.6"), 
+//      "resources", 
+//      configuration(element("outputDirectory", tempAssemblyOut.toString())),
+//      executionEnvironment(project,mavenSession,pluginManager));
+//    
+//    project.setContextValue("project.build.resources", preResoruces);
+    
+    // run the assembly plugin
+    
+    
+    
+    
+//    getLog().info("opening assembly file target/"+assemblyFileName);
+//
+//    List<String> fileList = new ArrayList<>();
+//    
+//    // build file list
+//    try (
+//          TarArchiveInputStream tin = getTarInputStream(new File("target/"+assemblyFileName));
+//          TarArchiveOutputStream tout = new TarArchiveOutputStream(
+//            new GZIPOutputStream(new FileOutputStream(new File("target/"+parcelName+".parcel"))));
+//        ) {
+//      tout.setLongFileMode(TarArchiveOutputStream.LONGFILE_POSIX);
+//      
+//      TarArchiveEntry next=tin.getNextTarEntry();     
+//      while (next !=null) {
+//        String targetEntryName =  getTargetName(next.getName());
+//        getLog().info("Process "+next.getName()+" target dir in parcel "+targetEntryName+" size of "+next.getSize());
+//        TarArchiveEntry targetEntry = new TarArchiveEntry(targetEntryName);
+//        targetEntry.setGroupName("root");
+//        targetEntry.setUserName("root");
+//        targetEntry.setMode(0755);
+//        if (next.getSize()< next.getRealSize()) {
+//          targetEntry.setSize(next.getRealSize());
+//        } else {
+//          targetEntry.setSize(next.getSize());
+//        }
+//        tout.putArchiveEntry(targetEntry);
+//        IOUtils.copy(tin, tout);
+//        fileList.add(targetEntryName);
+//        tout.closeArchiveEntry();
+//        
+//        //tout.flush();
+//        next=tin.getNextTarEntry();     
+//      }
+//      
+//      // generate the filelist.json
+//      StringBuilder buff = new StringBuilder();
+//      
+//      buff.append("{\n");
+//      buff.append(("    \""+artifactId+"\": {"));
+//      buff.append(("    \"name\":\""+artifactId+"\""));
+//      buff.append(("    \"version\":\""+version+"\""));
+//      buff.append(("       \"files\": {"));
+//      for (int i =0; i < fileList.size();i++) {
+//        String entry = fileList.get(i);
+//        buff.append(("       "+entry+" {}"));
+//        if (i < fileList.size()-1) {
+//          buff.append(",");
+//        }
+//        buff.append("\n");
+//      }
+//      buff.append(("       }\n"));
+//      buff.append(("    }\n"));
+//      buff.append("}]n");
+//      byte fileListBytes[]=buff.toString().getBytes();
+//      TarArchiveEntry fileListEntry = new TarArchiveEntry(parcelName.substring(0,parcelName.lastIndexOf('-'))+"/meta/filelist.json");
+//      fileListEntry.setGroupName("root");
+//      fileListEntry.setUserName("root");
+//      fileListEntry.setMode(0755);
+//      fileListEntry.setSize(fileListBytes.length);
+//      tout.putArchiveEntry(fileListEntry);
+//      tout.write(fileListBytes);
+//      tout.closeArchiveEntry();
+//      
+//      // now create the parcel.json.
+//      buff.setLength(0);
+//      buff.append("{").append("\n");
+//      buff.append("\"schema_version\":     1,").append("\n");
+//      buff.append("\"name\":               \""+artifactId+"\",").append("\n");
+//      buff.append("\"version\":            \""+version+"\",").append("\n");
+//      if (depends!=null) {
+//        buff.append("\"depends\":            \""+depends+"\",").append("\n");
+//      }
+      
+      /*
+  
+
+  "setActiveSymlink":   true,
+
+  "scripts": {
+    "defines": "kafka_env.sh"
+  },
+
+  "packages": [
+    { "name":    "kafka",
+      "version": "0.11.0+kafka3.0.0"
+    }
+  ],
+
+  "components": [
+    { "name":     "kafka",
+      "version":  "0.11.0-kafka3.0.0",
+      "pkg_version":  "0.11.0+kafka3.0.0",
+      "pkg_release": "1.3.0.0.p0.50"
+    }
+  ],
+
+  "provides": [
+        "kafka"
+  ]
+}
+
+       */
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+  //    tout.flush();
+      
+      
+//    } catch (Exception e) {
+//      getLog().error(e);
+//      return;
+//    }
+    
+    
+    
+    // look for parcel/ directory
+    //    if scripts, add to script list
+    //    if meta/alternatives.json exists, add it to meta/
+    //    filelist.json with list of files
+    
+    
+    
+    
+    
+    
+    
+    
+    //
+//    List<Plugin> plugins = (List<Plugin>) project.getBuildPlugins();
+    
+//    plugins.stream()
+//        .filter((plugin) -> plugin.getId().equals("org.apache.maven.plugins:maven-assembly-plugin"))
+//        .findFirst().get();
+      
+    
+//    Plugin assembly = null;
+//    for (Plugin p : plugins) {
+//      if (p.getArtifactId().equals("maven-assembly-plugin")) {
+//        System.out.println(p.getConfiguration());
+//
+//        Xpp3Dom conf = (Xpp3Dom)p.getConfiguration();
+//        
+//        //conf.getChild(")
+//        
+//      }
+//    }
+      
+       // now rename the .tar.gz to .parcel
+//      if (!finalParcelName.endsWith(".parcel")) {
+//        finalParcelName=finalParcelName+".parcel";
+//      }
+
+ 
