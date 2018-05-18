@@ -16,9 +16,8 @@ Add the following to the build section of your pom.xml:
             <targetTypeOfParcel>flume</targetTypeOfParcel>
             <parcelName>${parcel base name} (Anaconda or CDH)</parcelName>
             <cdhVersion>${cdh.version}</cdhVersion>
-            <rhelVersion>${rh.version}</rhelVersion>
+            <rhelVersion>${rh.version}</rheglVersion>
         </configuration>
-
         <executions>
                 <execution>
                         <phase>package</phase>
