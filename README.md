@@ -29,6 +29,8 @@ Add the following to the build section of your pom.xml:
 </plugin>
 ```
 
+This will build the parcel automagically as part of your build process.
+
 The plugin will:
 1. Generate the evn.sh, alternatives.json, parcel.json,
 2. Create a tar file with the correct directory structure, based on the values for ${parcelName}, ${cdh.version}, and ${rh.version}

@@ -111,36 +111,17 @@ public class MavenParcelPlugin extends AbstractMojo  {
   }
   
   public void execute() throws MojoExecutionException {
-//    String artifactId = project.getArtifactId();
-    
-    // if snapshot, we'll add currenttimemills() to the version.
-//    String version=project.getVersion();
-//    long extra = System.currentTimeMillis();
-    
-//    if (version.endsWith("SNAPSHOT")) {
-//      version += "-";
-//      version += String.valueOf(extra);
-//    }
-
     String assemblyDescriptor = typeToTemplate.get(targetTypeOfParcel);
     
     File tempAssemblyDir = new File("target/parcelplugin/tempassembly");
     tempAssemblyDir.mkdirs();
     File tempAssembly = new File(tempAssemblyDir,"assembly.xml");
 
-//    File tempAssemblyOut = new File("target/parcelplugin/tempassemblydone");
-//    tempAssemblyOut.mkdirs();
-    
     getLog().info("using template file "+assemblyDescriptor);
-    
 
-    
-    
     try (InputStream resource = MavenParcelPlugin.class.getResourceAsStream("/"+assemblyDescriptor);
         FileOutputStream fout = new FileOutputStream(tempAssembly);
         ) {
-
-
         String ver = mavenSession.getCurrentProject().getVersion();
 
         if (ver.endsWith("-SNAPSHOT")){
@@ -174,10 +155,6 @@ public class MavenParcelPlugin extends AbstractMojo  {
         }
       }
 
-//      FileWriter testMySubs = new FileWriter(new File(templateDir,"woot.txt"));
-//      testMySubs.write("my name is ${foobar}, yo version ${project.version}");
-//      IOUtils.closeQuietly(testMySubs);
-
       //maven-assembly-plugin to build the tar
       executeMojo(plugin("org.apache.maven.plugins","maven-assembly-plugin","3.1.0"), 
       "single", 
@@ -189,7 +166,6 @@ public class MavenParcelPlugin extends AbstractMojo  {
       executionEnvironment(project,mavenSession,pluginManager));
       
       File myAssembledTar = new File("target/"+finalParcelName+"-distribution.tar.gz");
-
 
       // get the parcel.json file
       try (TarArchiveInputStream tin =
@@ -251,9 +227,7 @@ public class MavenParcelPlugin extends AbstractMojo  {
           tout.closeArchiveEntry();
           entry = tin.getNextTarEntry();
         }
-        
-       
-        
+
         TarArchiveEntry filesEntry = new TarArchiveEntry(finalParcelName+"-"+cdhVersion+"/meta/filelist.json");
         byte fileList[]=gson.toJson(componentToFiles).getBytes();
         filesEntry.setSize(fileList.length);
@@ -261,8 +235,6 @@ public class MavenParcelPlugin extends AbstractMojo  {
         
         tout.write(fileList);
         tout.closeArchiveEntry();
-        
-        
       }
 
       myAssembledTar.delete();
@@ -273,7 +245,7 @@ public class MavenParcelPlugin extends AbstractMojo  {
       File hashFile = new File(parcelFile.getParent(),parcelFile.getName()+".sha");
       FileOutputStream hfout = new FileOutputStream(hashFile);
       hfout.write(hash.getBytes());
-      org.apache.commons.io.IOUtils.closeQuietly(hfout);
+      IOUtils.closeQuietly(hfout);
       
     } catch (Exception e) {
       e.printStackTrace();

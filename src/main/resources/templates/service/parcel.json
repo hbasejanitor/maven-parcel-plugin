@@ -1,19 +1,19 @@
 {
   "schema_version": 1,
-  "name": "HBASE10_PROXY_FLUME_SOURCE",
-  "version": "${project.version}-${cdh.version}",
+  "name": "${parcelName}",
+  "version": "${parcelVersion}",
   "depends": "CDH (>= 5.2), CDH (<< 6.0)",
   "setActiveSymlink": true,
   "packages": [
     {
-      "name": "hbase10-proxy-flume-source",
+      "name": "${project.artifactId}",
       "version": "${project.version}"
     }
   ],
 
   "components": [
     {
-      "name": "hbase10-proxy-flume-source",
+      "name": "${project.artifactId}",
       "version": "${project.version}",
       "pkg_version": "${project.version}",
       "pkg_release": "${project.version}"
@@ -21,13 +21,13 @@
   ],
 
   "provides": [
-    "flume-plugin"
+    "${project.artifactId}"
   ],
 
   "groups": [],
 
   "scripts": {
-    "defines": "hbase10-proxy-flume-source-env.sh"
+    "defines": "env.sh"
   },
 
   "users": {
